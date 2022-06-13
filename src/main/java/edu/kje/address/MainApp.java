@@ -7,11 +7,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 import edu.kje.address.model.Person;
+import edu.kje.address.view.PersonEditDialogController;
+import edu.kje.address.view.PersonOverviewController;
 
 /**
  * JavaFX App
@@ -56,6 +60,9 @@ public class MainApp extends Application {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Address App");
 
+        //set the app icon
+        this.primaryStage.getIcons().add(new Image("file:resources/address_book_32.png"));
+
         initRootLayout();
         showPersonOverview();
 
@@ -88,9 +95,47 @@ public class MainApp extends Application {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("view/PersonOverview.fxml"));
             AnchorPane personOverview = (AnchorPane) loader.load();
+
+            // Set person overview into the center of the root layout
             rootLayout.setCenter(personOverview);
+
+            //Give the controller access to the main app
+            PersonOverviewController controller = loader.getController();
+            controller.setMainApp(this);
+
         } catch (IOException e){
             e.printStackTrace();
+        }
+    }
+    
+    public boolean showPersonEditingDialog(Person person){
+        try{
+            //Load the fxml file and create a new stage and popup dialog
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/PersonEditDialog.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+
+            //Create the dialog Stage.
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Edit Person Details");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            //Set the person into the controller
+            PersonEditDialogController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setPerson(person);
+
+            //Show the dialog window until the user closes it
+            dialogStage.showAndWait();
+
+            return controller.isOKClicked();
+
+        } catch (IOException e){
+            e.printStackTrace();
+            return false;
         }
     }
 
