@@ -61,7 +61,7 @@
                   </GridPane>
                   <ButtonBar layoutX="159.0" layoutY="345.0" prefHeight="33.0" prefWidth="343.0" AnchorPane.bottomAnchor="21.0" AnchorPane.rightAnchor="14.0">
                     <buttons>
-                      <Button mnemonicParsing="false" onAction="#handleNewPerson" prefHeight="33.0" prefWidth="150.0" text="New..." />
+                      <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleNewPerson" prefHeight="33.0" prefWidth="150.0" text="New..." />
                         <Button mnemonicParsing="false" onAction="#handleEditPerson" text="Edit..." />
                         <Button mnemonicParsing="false" onAction="#handleDeletePerson" text="Delete..." />
                     </buttons>
