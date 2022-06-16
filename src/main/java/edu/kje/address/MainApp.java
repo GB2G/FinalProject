@@ -29,7 +29,8 @@ import edu.kje.address.view.PersonOverviewController;
 import edu.kje.address.view.RootLayoutController;
 
 /**
- * JavaFX App
+ * JavaFX App made following a tutorial by Marco Jakob. 
+ * Website: https://code.makery.ch
  * @author Kevin El-Saikali
  * @version 2022-06-16
  * 
@@ -40,7 +41,7 @@ public class MainApp extends Application {
      * The data is an observable list of Persons
      */
 
-	private ObservableList<Person> personData = FXCollections.observableArrayList();
+	private ObservableList<Person> personData = FXCollections.observableArrayList(); //Permet de savoir quand un changement arrive aux informations du document
 
 	/**
 	 * Constructor
@@ -71,7 +72,7 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        this.primaryStage = primaryStage;
+        this.primaryStage = primaryStage; //MainApp est maintenant le centrale de l'application
         this.primaryStage.setTitle("Address App"); //Nommer notre application Address App
 
         //set the app icon
@@ -88,7 +89,7 @@ public class MainApp extends Application {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("view/RootLayout.fxml")); 
-            rootLayout = (BorderPane) loader.load();
+            rootLayout = (BorderPane) loader.load(); //Les informations dans rootlayout sont téléchargés
     
             // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout); 
