@@ -30,6 +30,9 @@ import edu.kje.address.view.RootLayoutController;
 
 /**
  * JavaFX App
+ * @author Kevin El-Saikali
+ * @version 2022-06-16
+ * 
  */
 public class MainApp extends Application {
 
