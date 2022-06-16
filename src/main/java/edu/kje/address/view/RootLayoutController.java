@@ -6,7 +6,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.FileChooser;
-import javafx.stage.FileChooser.ExtensionFilter;
 import edu.kje.address.MainApp;
 
 /**
@@ -113,6 +112,14 @@ public class RootLayoutController {
         alert.setContentText("Tutorial followed made by: Marco Jakob\nWebsite: http://code.makery.ch");
 
         alert.showAndWait();
+    }
+
+    /**
+     * Opens the birthday statistics.
+     */
+    @FXML
+    private void handleShowBirthdayStatistics() {
+    mainApp.showBirthdayStatistics();
     }
 
     /**

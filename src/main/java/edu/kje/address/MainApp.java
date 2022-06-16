@@ -23,6 +23,7 @@ import javax.xml.bind.Unmarshaller;
 
 import edu.kje.address.model.Person;
 import edu.kje.address.model.PersonListWrapper;
+import edu.kje.address.view.BirthdayStatisticsController;
 import edu.kje.address.view.PersonEditDialogController;
 import edu.kje.address.view.PersonOverviewController;
 import edu.kje.address.view.RootLayoutController;
@@ -81,23 +82,29 @@ public class MainApp extends Application {
 
     public void initRootLayout(){
         try {
-            //Load the layout from FXML File
+            // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("view/RootLayout.fxml"));
+            loader.setLocation(MainApp.class
+                    .getResource("view/RootLayout.fxml"));
             rootLayout = (BorderPane) loader.load();
-
-            //Show the scene containing Root Layout
+    
+            // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
-        
-            //Give the controller access to the main app
+    
+            // Give the controller access to the main app.
             RootLayoutController controller = loader.getController();
             controller.setMainApp(this);
     
             primaryStage.show();
-
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
+        }
+    
+        // Try to load last opened person file.
+        File file = getPersonFilePath();
+        if (file != null) {
+            loadPersonDataFromFile(file);
         }
     }
 
@@ -223,33 +230,57 @@ public class MainApp extends Application {
      */
 
     public void savePersonDataToFile(File file){
-        try{
+        try {
             JAXBContext context = JAXBContext.newInstance(PersonListWrapper.class);
             Marshaller m = context.createMarshaller();
-            m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true); //Lets you convert java to xml
-
-            //Wrapping our person data
+            m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+    
+            // Wrapping our person data.
             PersonListWrapper wrapper = new PersonListWrapper();
             wrapper.setPersons(personData);
-
-            //Marshalling and saving XML to the file
+    
+            // Marshalling and saving XML to the file.
             m.marshal(wrapper, file);
-
-            //Save file path to registry
+    
+            // Save the file path to the registry.
             setPersonFilePath(file);
-
-        }catch (Exception e){ //Catches any exception
-
+        } catch (Exception e) { // catches ANY exception
             Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Could not save data");
             alert.setContentText("Could not save data to file:\n" + file.getPath());
-
+    
             alert.showAndWait();
-
-        } 
+        }
 
         
+    }
+
+    /**
+     * Opens a dialog to show birthday statistics.
+     */
+    public void showBirthdayStatistics() {
+        try {
+            // Load the fxml file and create a new stage for the popup.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/BirthdayStatistics.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Birthday Statistics");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            // Set the persons into the controller.
+            BirthdayStatisticsController controller = loader.getController();
+            controller.setPersonData(personData);
+
+            dialogStage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
