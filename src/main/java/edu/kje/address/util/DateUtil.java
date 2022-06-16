@@ -7,7 +7,7 @@ import java.time.format.DateTimeParseException;
 /**
  * Helper function for handling dates
  * 
- * @author Kevin El-Saikali
+ * @author Marco Jakob
  */
 
 public class DateUtil {

@@ -72,10 +72,10 @@ public class MainApp extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("Address App");
+        this.primaryStage.setTitle("Address App"); //Nommer notre application Address App
 
         //set the app icon
-        this.primaryStage.getIcons().add(new Image("file:resources/images/address_book_32.png"));
+        this.primaryStage.getIcons().add(new Image("file:resources/images/address_book_32.png")); //Ajoute le icone de l'application
 
         initRootLayout();
         showPersonOverview();
@@ -83,16 +83,15 @@ public class MainApp extends Application {
     }
 
 
-    public void initRootLayout(){
+    public void initRootLayout(){  //La forme de base de notre programme
         try {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class
-                    .getResource("view/RootLayout.fxml"));
+            loader.setLocation(MainApp.class.getResource("view/RootLayout.fxml")); 
             rootLayout = (BorderPane) loader.load();
     
             // Show the scene containing the root layout.
-            Scene scene = new Scene(rootLayout);
+            Scene scene = new Scene(rootLayout); 
             primaryStage.setScene(scene);
     
             // Give the controller access to the main app.
@@ -119,7 +118,7 @@ public class MainApp extends Application {
         
         try{
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("view/PersonOverview.fxml"));
+            loader.setLocation(MainApp.class.getResource("view/PersonOverview.fxml")); //Cherche les infos dans le fichier .fxml
             AnchorPane personOverview = (AnchorPane) loader.load();
 
             // Set person overview into the center of the root layout
@@ -134,6 +133,13 @@ public class MainApp extends Application {
         }
     }
     
+    /**
+     * Permet à l'utilisateur d'étider les informations existantes.  
+     * On recherche les informations trouvés dans le fichier .fxml pour le fenêtre d'édition
+     * et on donne l'option de les changer
+     * @param person
+     * @return
+     */
     public boolean showPersonEditingDialog(Person person){
         try{
             //Load the fxml file and create a new stage and popup dialog

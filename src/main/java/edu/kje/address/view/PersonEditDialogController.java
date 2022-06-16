@@ -10,7 +10,7 @@ import edu.kje.address.util.DateUtil;
 
 /**Dialog to edit details of a person
  * 
- * @author Kevin El-Saikali
+ * @author Marco Jakob
  */
 public class PersonEditDialogController {
 

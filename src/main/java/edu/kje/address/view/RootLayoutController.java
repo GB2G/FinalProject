@@ -13,7 +13,7 @@ import edu.kje.address.MainApp;
  * application layout containing a many bar and space where other JavaFX
  * elements can be placed
  * 
- * @author Kevin El-Saikali
+ * @author Marco Jakob
  */
 
 public class RootLayoutController {
