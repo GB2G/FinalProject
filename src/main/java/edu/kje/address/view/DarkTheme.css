@@ -52,9 +52,9 @@
 
 .table-view .column-header .label {
     -fx-font-size: 20pt;
-    -fx-font-family: "Segoe UI Light";
+    -fx-font-family: "Calibri";
     -fx-text-fill: white;
-    -fx-alignment: center-left;
+    -fx-alignment: center;
     -fx-opacity: 1;
 }
 
@@ -81,7 +81,7 @@
 
 .menu-bar .label {
     -fx-font-size: 14pt;
-    -fx-font-family: "Segoe UI Light";
+    -fx-font-family: "Calibri";
     -fx-text-fill: white;
     -fx-opacity: 0.9;
 }
@@ -92,7 +92,7 @@
 
 .text-field {
     -fx-font-size: 12pt;
-    -fx-font-family: "Segoe UI Semibold";
+    -fx-font-family: "Calibri";
 }
 
 /* 
@@ -106,7 +106,7 @@
     -fx-border-width: 2;
     -fx-background-radius: 0;
     -fx-background-color: #1d1d1d;
-    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-family: "Calibri", Helvetica, Arial, sans-serif;
     -fx-font-size: 11pt;
     -fx-text-fill: #d8d8d8;
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
