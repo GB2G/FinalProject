@@ -21,7 +21,7 @@ public class PersonEditDialogController {
     @FXML
     private TextField streetField;
     @FXML
-    private TextField postalCodeField;
+    private TextField phoneNumField;
     @FXML
     private TextField cityField;
     @FXML
@@ -64,7 +64,7 @@ public class PersonEditDialogController {
         firstNameField.setText(person.getFirstName());
         lastNameField.setText(person.getLastName());
         streetField.setText(person.getStreet());
-        postalCodeField.setText(Integer.toString(person.getPostalCode()));
+        phoneNumField.setText(Integer.toString(person.getPhoneNum()));
         cityField.setText(person.getCity());
         birthdayField.setText(DateUtil.format(person.getBirthday()));;
         birthdayField.setPromptText("dd/mm/yyyy");
@@ -91,7 +91,7 @@ public class PersonEditDialogController {
                 person.setFirstName(firstNameField.getText());
                 person.setLastName(lastNameField.getText());
                 person.setStreet(streetField.getText());
-                person.setPostalCode(Integer.parseInt(postalCodeField.getText()));
+                person.setPostalCode(Integer.parseInt(phoneNumField.getText()));
                 person.setCity(cityField.getText());
                 person.setBirthday(DateUtil.parse(birthdayField.getText()));
     
@@ -126,14 +126,14 @@ public class PersonEditDialogController {
             errorMessage += "No valid street!\n"; 
         }
 
-        if (postalCodeField.getText() == null || postalCodeField.getText().length() == 0) {
+        if (phoneNumField.getText() == null || phoneNumField.getText().length() == 0) {
             errorMessage += "No valid postal code!\n"; 
         } else {
             // try to parse the postal code into an int.
             try {
-                Integer.parseInt(postalCodeField.getText());
+                Integer.parseInt(phoneNumField.getText());
             } catch (NumberFormatException e) {
-                errorMessage += "No valid postal code (must be an integer)!\n"; 
+                errorMessage += "No valid phone number (must be an integer)!\n"; 
             }
         }
 

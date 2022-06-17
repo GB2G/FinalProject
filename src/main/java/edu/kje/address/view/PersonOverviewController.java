@@ -86,7 +86,7 @@ public class PersonOverviewController {
             firstNameLabel.setText(person.getFirstName());
             lastNameLabel.setText(person.getLastName());
             streetLabel.setText(person.getStreet());
-            postalCodeLabel.setText(Integer.toString(person.getPostalCode()));
+            postalCodeLabel.setText(Integer.toString(person.getPhoneNum()));
             cityLabel.setText(person.getCity());
 
             birthdayLabel.setText(DateUtil.format(person.getBirthday()));
@@ -145,6 +145,5 @@ public class PersonOverviewController {
         }
     }
 }
-//https://code.makery.ch/library/javafx-tutorial/part2/
     
 

@@ -93,20 +93,20 @@ public class MainApp extends Application {
     
             // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout); 
-            primaryStage.setScene(scene);
+            primaryStage.setScene(scene); //Cree par javafx et non par l'application 
     
             // Give the controller access to the main app.
             RootLayoutController controller = loader.getController();
-            controller.setMainApp(this);
+            controller.setMainApp(this); 
     
-            primaryStage.show();
-        } catch (IOException e) {
+            primaryStage.show(); //Montrer le layout cree par javafx a l'ecran
+        } catch (IOException e) { //Prendre soin des exceptions comme si le fxml n'existe pas
             e.printStackTrace();
         }
     
         // Try to load last opened person file.
         File file = getPersonFilePath();
-        if (file != null) {
+        if (file != null) { //Autant qu'un fichier a déjà été créé, on va afficher celui le plus récemment fermé
             loadPersonDataFromFile(file);
         }
     }
@@ -120,7 +120,7 @@ public class MainApp extends Application {
         try{
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("view/PersonOverview.fxml")); //Cherche les infos dans le fichier .fxml
-            AnchorPane personOverview = (AnchorPane) loader.load();
+            AnchorPane personOverview = (AnchorPane) loader.load(); //Insérer les informations trouvés dans le .fxml dans l'application
 
             // Set person overview into the center of the root layout
             rootLayout.setCenter(personOverview);
@@ -151,10 +151,10 @@ public class MainApp extends Application {
             //Create the dialog Stage.
             Stage dialogStage = new Stage();
             dialogStage.setTitle("Edit Person Details");
-            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initModality(Modality.WINDOW_MODAL); //Prévient que des évènements se font délivrés à d'autres fenêtres de l'application (un input... etc.)
             dialogStage.initOwner(primaryStage);
             Scene scene = new Scene(page);
-            dialogStage.setScene(scene);
+            dialogStage.setScene(scene); //Afficher la page d'édition
 
             //Set the person into the controller
             PersonEditDialogController controller = loader.getController();
@@ -182,7 +182,7 @@ public class MainApp extends Application {
     public File getPersonFilePath() {
         Preferences prefs = Preferences.userNodeForPackage(MainApp.class);
         String filePath = prefs.get("filePath", null);
-        if (filePath != null) {
+        if (filePath != null) { //Si un chemin au fichier existe déjà, retourne cette chemin pour l'afficher quand on ouvre l'application de nouveau
             return new File(filePath);
         } else {
             return null;
@@ -201,7 +201,7 @@ public class MainApp extends Application {
             prefs.put("filePath", file.getPath());
 
             // Update the stage title.
-            primaryStage.setTitle("AddressApp - " + file.getName());
+            primaryStage.setTitle("AddressApp - " + file.getName()); //Le titre de l'application va être le nom avec lequel vous avez sauvegardé votre fichier
         } else {
             prefs.remove("filePath");
 
@@ -213,10 +213,10 @@ public class MainApp extends Application {
     public void loadPersonDataFromFile(File file){
         try{
             JAXBContext context = JAXBContext.newInstance(PersonListWrapper.class);
-            Unmarshaller um = context.createUnmarshaller(); //Lets you read XML into the object
+            Unmarshaller um = context.createUnmarshaller(); //Permet de lire le XML et le convertir en Java
 
             //Reading XML from the file and unmarshalling
-            PersonListWrapper wrapper = (PersonListWrapper) um.unmarshal(file);
+            PersonListWrapper wrapper = (PersonListWrapper) um.unmarshal(file); //Lire le xml qui seretrouve dans le fichier
 
             personData.clear();
             personData.addAll(wrapper.getPersons());
@@ -224,7 +224,7 @@ public class MainApp extends Application {
             //Save the file path to the registry
             setPersonFilePath(file);
         } catch(Exception e){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
+            Alert alert = new Alert(Alert.AlertType.ERROR); //Si les données ne sont pas là afficher une alerte
             alert.setTitle("Error");
             alert.setHeaderText("Could not load data");
             alert.setContentText("Could not load data from file:\n" + file.getPath());
@@ -242,15 +242,15 @@ public class MainApp extends Application {
     public void savePersonDataToFile(File file){
         try {
             JAXBContext context = JAXBContext.newInstance(PersonListWrapper.class);
-            Marshaller m = context.createMarshaller();
-            m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            Marshaller m = context.createMarshaller(); //Fais l'opposé du unmarshaller. Celui ci prend le java et le converti en xml
+            m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true); //Utilisé pour formatter le xml qui est traduit
     
             // Wrapping our person data.
             PersonListWrapper wrapper = new PersonListWrapper();
             wrapper.setPersons(personData);
     
             // Marshalling and saving XML to the file.
-            m.marshal(wrapper, file);
+            m.marshal(wrapper, file); 
     
             // Save the file path to the registry.
             setPersonFilePath(file);
