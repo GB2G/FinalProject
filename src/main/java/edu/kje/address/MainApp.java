@@ -126,7 +126,7 @@ public class MainApp extends Application {
             rootLayout.setCenter(personOverview);
 
             //Give the controller access to the main app
-            PersonOverviewController controller = loader.getController();
+            PersonOverviewController controller = loader.getController(); //Permet au controlleur d'utiliser les données retrouvés dans PersonOverview
             controller.setMainApp(this);
 
         } catch (IOException e){
