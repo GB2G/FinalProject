@@ -73,7 +73,7 @@ public class MainApp extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         this.primaryStage = primaryStage; //MainApp est maintenant le centrale de l'application
-        this.primaryStage.setTitle("Address App"); //Nommer notre application Address App
+        this.primaryStage.setTitle("Contacts App"); //Nommer notre application Address App
 
         //set the app icon
         this.primaryStage.getIcons().add(new Image("file:src/main/resources/images/address_icon_32.png")); //Ajoute le icone de l'application
