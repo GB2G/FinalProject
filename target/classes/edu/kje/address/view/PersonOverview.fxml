@@ -11,15 +11,15 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane minHeight="400.0" prefWidth="700.0" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.kje.address.view.PersonOverviewController">
+<AnchorPane prefHeight="400.0" prefWidth="800.0" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.kje.address.view.PersonOverviewController">
    <children>
-      <SplitPane dividerPositions="0.4444444444444444" layoutX="68.0" layoutY="34.0" prefHeight="300.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane dividerPositions="0.39125" layoutX="68.0" layoutY="34.0" prefHeight="300.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="600.0">
                <children>
                   <TableView fx:id="personTable" prefHeight="299.0" prefWidth="175.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                      <TableColumn fx:id="lastNameColumn"  prefWidth="87.19998168945312" text="Last Name"  />
+                      <TableColumn fx:id="lastNameColumn" prefWidth="87.19998168945312" text="Last Name" />
                       <TableColumn fx:id="firstNameColumn" prefWidth="87.20000606775284" text="First Name" />
                     </columns>
                      <columnResizePolicy>
@@ -59,7 +59,7 @@
                         <Label fx:id="birthdayLabel" styleClass="label-bright" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                      </children>
                   </GridPane>
-                  <ButtonBar layoutY="352.0" prefHeight="0.0" prefWidth="354.0" AnchorPane.bottomAnchor="14.399999999999991" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="352.0">
+                  <ButtonBar layoutX="72.0" layoutY="352.0" prefHeight="0.0" prefWidth="354.0" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="14.0">
                     <buttons>
                       <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleNewPerson" prefHeight="33.0" prefWidth="150.0" text="New..." />
                         <Button mnemonicParsing="false" onAction="#handleEditPerson" text="Edit..." />

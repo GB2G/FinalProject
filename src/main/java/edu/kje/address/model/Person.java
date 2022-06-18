@@ -22,7 +22,7 @@ public class Person {
     private final StringProperty firstName;
     private final StringProperty lastName;
     private final StringProperty street;
-    private final IntegerProperty phoneNum;
+    private final StringProperty phoneNum;
     private final StringProperty city;
     private final ObjectProperty<LocalDate> birthday;
 
@@ -44,7 +44,7 @@ public class Person {
 
           //Some initial dummy data, just for convenient testing
           this.street = new SimpleStringProperty("some street");
-          this.phoneNum = new SimpleIntegerProperty(613123456);
+          this.phoneNum = new SimpleStringProperty("(613)-123-4567");
           this.city = new SimpleStringProperty("some city");
           this.birthday = new SimpleObjectProperty<LocalDate>(LocalDate.of(1999,2,21));
 
@@ -86,15 +86,15 @@ public class Person {
             return street;
         }
     
-        public int getPhoneNum() {
+        public String getPhoneNum() {
             return phoneNum.get();
         }
-    
-        public void setPostalCode(int postalCode) {
-            this.phoneNum.set(postalCode);
+
+        public void setPhoneNum(String phoneNum) {
+            this.phoneNum.set(phoneNum);
         }
         
-        public IntegerProperty postalCodeProperty() {
+        public StringProperty phoneNumProperty() {
             return phoneNum;
         }
     
