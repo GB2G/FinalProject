@@ -76,7 +76,7 @@ public class MainApp extends Application {
         this.primaryStage.setTitle("Address App"); //Nommer notre application Address App
 
         //set the app icon
-        this.primaryStage.getIcons().add(new Image("file:resources/images/address_book_32.png")); //Ajoute le icone de l'application
+        this.primaryStage.getIcons().add(new Image("file:src/main/resources/images/address_icon_32.png")); //Ajoute le icone de l'application
 
         initRootLayout();
         showPersonOverview();
@@ -151,6 +151,7 @@ public class MainApp extends Application {
             //Create the dialog Stage.
             Stage dialogStage = new Stage();
             dialogStage.setTitle("Edit Person Details");
+            dialogStage.getIcons().add(new Image("file:src/main/resources/images/edit_info_33.png"));
             dialogStage.initModality(Modality.WINDOW_MODAL); //Prévient que des évènements se font délivrés à d'autres fenêtres de l'application (un input... etc.)
             dialogStage.initOwner(primaryStage);
             Scene scene = new Scene(page);
