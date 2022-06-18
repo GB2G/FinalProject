@@ -30,13 +30,13 @@
             <Label text="Last Name" GridPane.rowIndex="2" />
             <Label text="Street" GridPane.rowIndex="3" />
             <Label text="City" GridPane.rowIndex="4" />
-            <Label text="Postal Code" GridPane.rowIndex="5" />
+            <Label text="Phone Number" GridPane.rowIndex="5" />
             <Label text="Birthday" GridPane.rowIndex="6" />
             <TextField fx:id="firstNameField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField fx:id="lastNameField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField fx:id="streetField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <TextField fx:id="cityField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <TextField fx:id="postalCodeField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextField fx:id="phoneNumField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <TextField fx:id="birthdayField" GridPane.columnIndex="1" GridPane.rowIndex="6" />
          </children>
       </GridPane>
